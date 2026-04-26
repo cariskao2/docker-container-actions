@@ -1,0 +1,16 @@
+# action.yml
+name: 'Hello World'
+description: 'Greet someone and record the time'
+inputs:
+  who-to-greet:  # id of input
+    description: 'Who to greet'
+    required: true
+    default: 'World'
+outputs:
+  time: # id of output
+    description: 'The time we greeted you'
+runs:
+  using: 'docker'
+  image: 'Dockerfile' # 這個鏡像是從dockerfile構建的
+  args:
+    - ${{ inputs.who-to-greet }} # 這個參數會傳遞給我們的容器using:docker然後進到dockerfile裡
